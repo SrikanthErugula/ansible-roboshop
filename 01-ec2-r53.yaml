@@ -6,7 +6,7 @@
     sg_id: sg-05184d3f3e9b3610f # replace with your SG ID
     zone_id: "Z0508801ITHFU9ARNA74" # replace with your ID
     domain_name: "dsoaws.fun"
-    instance:
+    instances:
     - mongodb
     # - redis 
     # - mysql 
@@ -20,7 +20,7 @@
       image_id: "{{ ami_id }}"
       tags:
         Name: "{{ item }}" 
-    loop: "{{ instances }}"
+    loop: "{{ instances }}" #  so here intially instance ani vudi -- error fatal: [localhost]: FAILED! => {"msg": "'instances' is undefined. 'instances' is undefined"}
     register: ec2_output # manam istum name 
   
   - name: print the ec2_output
