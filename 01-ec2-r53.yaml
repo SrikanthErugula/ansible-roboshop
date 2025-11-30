@@ -26,3 +26,11 @@
   - name: print the ec2_output
     ansible.builtin.debug:
       msg: "{{ ec2_output }}"
+# [ ec2-user@ip-172-31-76-65 ~/ansible-roboshop ]$ pip3.9 install botocore boto3 -- so idi install cheste ansible can connect 
+  - name: print public_ip
+    ansible.builtin.debug: "{{item.instances(0).public_ip_address }}"
+    loop: "{{ ec2_output.resuls }}"
+
+  - name: print private_ip
+    ansible.builtin.debug: "{{item.instances(0).private_ip_address }}"
+    loop: "{{ ec2_output.resuls }}"
