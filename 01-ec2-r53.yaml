@@ -1,0 +1,28 @@
+- name: create ec2 and route 53
+  hostes: local
+  connection: local
+  vars:
+    ami_id: ami-09c813fb71547fc4f
+    sg_id: sg-05184d3f3e9b3610f # replace with your SG ID
+    zone_id: "Z0508801ITHFU9ARNA74" # replace with your ID
+    domain_name: "dsoaws.fun"
+    instance:
+    - mongodb
+    # - redis 
+    # - mysql 
+    # - rabbitmq
+  tasks:
+  - name: create ec2 instance 
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      instance_type: t3.micro
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      tags:
+        Name: "{{ item }}" 
+    loop: "{{ instances }}"
+    register: ec2_output # manam istum name 
+  
+  - name: print the ec2_output
+    ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
