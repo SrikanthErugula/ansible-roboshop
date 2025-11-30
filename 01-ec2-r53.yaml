@@ -29,8 +29,8 @@
 # [ ec2-user@ip-172-31-76-65 ~/ansible-roboshop ]$ pip3.9 install botocore boto3 -- so idi install cheste ansible can connect 
   - name: print public_ip
     ansible.builtin.debug: "{{item.instances(0).public_ip_address }}"
-    loop: "{{ ec2_output.resuls }}"
+    loop: "{{ ec2_output.results }}"
 
   - name: print private_ip
     ansible.builtin.debug: "{{item.instances(0).private_ip_address }}"
-    loop: "{{ ec2_output.resuls }}"
+    loop: "{{ ec2_output.results }}"
