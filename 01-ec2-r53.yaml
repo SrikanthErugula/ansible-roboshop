@@ -6,11 +6,13 @@
     sg_id: sg-05184d3f3e9b3610f # replace with your SG ID
     zone_id: "Z0508801ITHFU9ARNA74" # replace with your ID
     domain_name: "dsoaws.fun"
-    instances:
-    - mongodb
-    - redis 
-    - mysql 
-    - rabbitmq
+    # we can pass instances through command line using -e     ... so everytime vachhi add chesukoni run cheyakunda intance ni by cmd tho run cretae cheyabchu 
+    
+    # instances:
+    # - mongodb
+    # - redis 
+    # - mysql 
+    # - rabbitmq
   tasks:
   - name: create ec2 instance 
     amazon.aws.ec2_instance:
