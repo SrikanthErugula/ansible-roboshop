@@ -14,13 +14,13 @@
   tasks:
   - name: create ec2 instance 
     amazon.aws.ec2_instance:
-      name: "{{ item }}" # this the key for reffer instance
+      #name: "{{ item }}" # this the key for reffer instance
       instance_type: t3.micro
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
 
       tags: # this is used for visible name for our understanding purpose
-        Name: "{{ item }}"  # ietm enduku ante instance aa name tho vudo aa name tho manaki visible authunhdi 
+        #Name: "{{ item }}"  # ietm enduku ante instance aa name tho vudo aa name tho manaki visible authunhdi 
     loop: "{{ instances }}" #  so here intially instance ani vudi -- error fatal: [localhost]: FAILED! => {"msg": "'instances' is undefined. 'instances' is undefined"}
     register: ec2_output # manam istum name 
   
