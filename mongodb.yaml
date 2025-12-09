@@ -35,4 +35,5 @@
       enabled: yes
   
 # so next mongodb pub ip tho vere tab lo login ayyyi ...$ netstat -lntp iste manaki results vasti....done mongodb
+# tcp        0      0 0.0.0.0:27017           0.0.0.0:*               LISTEN      -  -- need to open this port for successful connect
 

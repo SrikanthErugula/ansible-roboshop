@@ -30,3 +30,4 @@
       name: redis
       enabled: yes
       state: started
+# tcp        0      0 0.0.0.0:6379            0.0.0.0:*               LISTEN      - need to open this port for successful connect 
