@@ -28,15 +28,15 @@
     ansible.builtin.debug:
       msg: "{{ ec2_output }}"
 # #  [ ec2-user@ip-172-31-76-65 ~/ansible-roboshop ]$ pip3.9 install botocore boto3 -- so idi install cheste ansible can connect 
-#   - name: print public_ip
-#     ansible.builtin.debug: 
-#       msg: "{{ item.instances[0].public_ip_address }}"
-#     loop: "{{ ec2_output.results }}"
+  - name: print public_ip
+    ansible.builtin.debug: 
+      msg: "{{ item.instances[0].public_ip_address }}"
+    loop: "{{ ec2_output.results }}"
 
-#   - name: print private_ip
-#     ansible.builtin.debug: 
-#       msg: "{{ item.instances[0].private_ip_address }}"
-#     loop: "{{ ec2_output.results }}"
+  - name: print private_ip
+    ansible.builtin.debug: 
+      msg: "{{ item.instances[0].private_ip_address }}"
+    loop: "{{ ec2_output.results }}"
 
 #   #SO HERE SEPARATE GA PUBLIC AND PRIVATE IP DISPLAY AVUTHAI
 
