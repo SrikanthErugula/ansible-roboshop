@@ -3,7 +3,7 @@
   become: yes
   tasks: 
   - name: copy mongodb repo # our understand name
-    ansible.builtin.copy: # take from doc for excute the cmd URL IS ----  https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/copy_module.html
+    ansible.builtin.copy:  # take from doc for excute the cmd URL IS ----  https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/copy_module.html
     src: mongo.repo 
     dest: /etc/yum.repos.d/mongo.repo
     # here we have one dig that is ansible-roboshop 15:00 min class 25 
