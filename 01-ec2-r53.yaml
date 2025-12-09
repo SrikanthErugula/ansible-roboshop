@@ -24,10 +24,12 @@
     loop: "{{ instances }}" #  so here intially instance ani vudi -- error fatal: [localhost]: FAILED! => {"msg": "'instances' is undefined. 'instances' is undefined"}
     register: ec2_output # manam istum name 
   
-  - name: print the ec2_output
-    ansible.builtin.debug:
-      msg: "{{ ec2_output }}"
+  # - name: print the ec2_output
+  #   ansible.builtin.debug:
+  #     msg: "{{ ec2_output }}"
+
 # #  [ ec2-user@ip-172-31-76-65 ~/ansible-roboshop ]$ pip3.9 install botocore boto3 -- so idi install cheste ansible can connect 
+
   - name: print public_ip
     ansible.builtin.debug: 
       msg: "{{ item.instances[0].public_ip_address }}"
