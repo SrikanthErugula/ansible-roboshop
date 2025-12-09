@@ -20,7 +20,7 @@
       image_id: "{{ ami_id }}"
 
       tags: # this is used for visible name for our understanding purpose
-        #Name: "{{ item }}"  # ietm enduku ante instance aa name tho vudo aa name tho manaki visible authunhdi 
+        Name: "{{ item }}"  # ietm enduku ante instance aa name tho vudo aa name tho manaki visible authunhdi 
     loop: "{{ instances }}" #  so here intially instance ani vudi -- error fatal: [localhost]: FAILED! => {"msg": "'instances' is undefined. 'instances' is undefined"}
     register: ec2_output # manam istum name 
   
