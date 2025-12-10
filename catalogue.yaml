@@ -29,7 +29,7 @@
 
   - name: create app directory
     ansible.builtin.file:
-      state: directory
+      state: directory # present ani kuda ivvachu 
       path: /app
   # - name: Delete catalogue file
   #   ansible.builtin.file:
@@ -45,6 +45,9 @@
     ansible.builtin.unarchive: # ansible unzip module ---- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/unarchive_module.html
       src: /tmp/catalogue.zip
       dest: /app
-     # remote_src: yes  run chesi chudali 53:00 min chudali 
+# so intha varaku runcheste manaki error avstundhi like --The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+# so here remote server lo kadha task lu excute ayyedhi bcz we are configuring the remoteserver kabbati.. not in ansible server... 
+# by default ansible server li numchi file ni remote serevr loki move chayali feel avuthudni, bur actuall ga remote lone file vuntadi... we have a one option like as below remote_src
+      remote_src: yes # 
 
 #### so here archive ante zipping .......... unarchive ante unzipping 
