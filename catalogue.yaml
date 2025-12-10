@@ -45,9 +45,45 @@
     ansible.builtin.unarchive: # ansible unzip module ---- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/unarchive_module.html
       src: /tmp/catalogue.zip
       dest: /app
-# so intha varaku runcheste manaki error avstundhi like --The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
-# so here remote server lo kadha task lu excute ayyedhi bcz we are configuring the remoteserver kabbati.. not in ansible server... 
-# by default ansible server li numchi file ni remote serevr loki move chayali feel avuthudni, bur actuall ga remote lone file vuntadi... we have a one option like as below remote_src
+                  # so intha varaku runcheste manaki error avstundhi like --The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+                  # so here remote server lo kadha task lu excute ayyedhi bcz we are configuring the remoteserver kabbati.. not in ansible server... 
+                  # by default ansible server li numchi file ni remote serevr loki move chayali feel avuthudni, bur actuall ga remote lone file vuntadi... we have a one option like as below remote_src
       remote_src: yes # 
 
+                  # 98.81.251.192 | 172.31.85.14 | t3.micro | null
+                  # [ ec2-user@ip-172-31-85-14 /app ]$ ls -l
+                  # total 12
+                  # drwxr-xr-x 2 root root   28 Jun 23  2024 db
+                  # -rw-r--r-- 1 root root  477 Jun 23  2024 package.json
+                  # -rw-r--r-- 1 root root 4877 Jun 23  2024 server.js
+                  # ippudu extract ayyindi...........
+
 #### so here archive ante zipping .......... unarchive ante unzipping 
+  - name: install dependencies
+    community.general.npm: # ansible node npm --- https://docs.ansible.com/projects/ansible/latest/collections/community/general/npm_module.html
+      path: /app
+
+
+# so ila ivvvatum valla all dependencies ani install chestundi 
+  - name: copy catalogue service
+    ansible.builtin.copy:
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service
+
+  - name: copy mongo repo
+    ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+
+  - name: install mongodb client
+    ansible.builtin.package:
+      name: mongodb-mongosh
+      state: present
+  
+  - name: connnect to mongodb catalogue
+    ansible.builtin.command: mongosh mongodb.daws86s.fun --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+    register: catalogue_output # sohere we are taking output by run this line... register lo store avuthundi vachhina o/p
+
+  - name: print catalogue output
+    ansible.builtin.debug:
+      msg: "{{ catalogue_output }}"
