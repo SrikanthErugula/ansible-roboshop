@@ -17,7 +17,7 @@
     - mysql
 
   - name: install mysql python libraries
-    ansible.builtin.pip:
+    ansible.builtin.pip: # ansible pip module ........https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/pip_module.html
       executable: pip3.9
       name: "{{ item }}"
     loop:
@@ -74,7 +74,7 @@
       dest: /etc/systemd/system/shipping.service
 
   - name: import shipping data into mysql
-    community.mysql.mysql_db:
+    community.mysql.mysql_db: # ivvani kuda python lo develop ayyai kabbatti we need to use this pip3....
       state: import
       name: all
       login_host: mysql.dsoaws.fun
