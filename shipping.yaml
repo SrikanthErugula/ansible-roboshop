@@ -3,6 +3,11 @@
   hosts: shipping
   become: yes
   tasks:
+  # - name: install maven
+  #   ansible.builtin.dnf: 
+  #     name: maven
+  #     state: present
+
   - name: install maven
     ansible.builtin.dnf:
       name: "{{ item }}"
@@ -11,13 +16,13 @@
     - maven
     - mysql
 
-  - name: install mysql python libraries
-    ansible.builtin.pip:
-      executable: pip3.9
-      name: "{{ item }}"
-    loop:
-    - cryptography
-    - PyMySQL
+  # - name: install mysql python libraries
+  #   ansible.builtin.pip:
+  #     executable: pip3.9
+  #     name: "{{ item }}"
+  #   loop:
+  #   - cryptography
+  #   - PyMySQL
 
   - name: create roboshop system user
     ansible.builtin.user:
@@ -54,7 +59,7 @@
       remote_src: yes
 
   - name: install dependencies
-    ansible.builtin.command: mvn clean package
+    ansible.builtin.command: mvn clean package # so here target folder ani create ayyi andhulo .jar ani file create avuthundi
     args:
       chdir: /app
 
@@ -72,7 +77,7 @@
     community.mysql.mysql_db:
       state: import
       name: all
-      login_host: mysql.daws86s.fun
+      login_host: mysql.dsoaws.fun
       login_user: root
       login_password: RoboShop@1
       target: "{{ item }}"
