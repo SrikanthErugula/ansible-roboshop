@@ -31,10 +31,11 @@
     ansible.builtin.file:
       state: directory # present ani kuda ivvachu 
       path: /app
-  # - name: Delete catalogue file
-  #   ansible.builtin.file:
-  #     path: /tmp/catalogue.zip
-  #     state: absent
+      
+  - name: Delete catalogue file
+    ansible.builtin.file:
+      path: /tmp/catalogue.zip
+      state: absent
 
   - name: download catalogue application
     ansible.builtin.get_url: # ansible download file --- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/get_url_module.html
@@ -93,7 +94,7 @@
     when: catalogue_output.stdout | int < 0
 
   - name: daemon reload enable and start
-    ansible.builtin.systemd_service:
+    ansible.builtin.systemd_service: # type in google ansible systemd daemon reload ----- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/systemd_service_module.html
       name: catalogue
       enabled: true
       state: started
