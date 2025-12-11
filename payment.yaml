@@ -46,7 +46,7 @@
       remote_src: yes
 
   - name: install dependencies
-    ansible.builtin.pip:
+    ansible.builtin.pip: #ansible pip module ........https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/pip_module.html
       requirements: requirements.txt
       executable: pip3.9
     args:
