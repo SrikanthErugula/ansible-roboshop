@@ -21,11 +21,11 @@
       shell: /sbin/nologin
       home: /app
 
-  # Safe to remove directory, because 2nd time if we run it will download freshly. no error if does not exist
-  # - name: remove app directory
-  #   ansible.builtin.file: # type in google ansible create directory module  ----https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/file_module.html
-  #     path: /app
-  #     state: absent
+  #$Safe to remove directory, because 2nd time if we run it will download freshly. no error if does not exist
+  - name: remove app directory
+    ansible.builtin.file: # type in google ansible create directory module  ----https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/file_module.html
+      path: /app
+      state: absent
 
   - name: create app directory
     ansible.builtin.file:
