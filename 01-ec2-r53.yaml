@@ -6,7 +6,8 @@
     sg_id: sg-05184d3f3e9b3610f # replace with your SG ID
     zone_id: "Z0508801ITHFU9ARNA74" # replace with your ID
     domain_name: "dsoaws.fun"
-    # we can pass instances through command line using -e     ... so everytime vachhi add chesukoni run cheyakunda intance ni by cmd tho run cretae cheyabchu 
+    # we can pass instances through command line using -e .. so everytime vachhi add chesukoni run cheyakunda intance ni 
+    #by cmd tho run cretae cheyabchu 
 
     instances:
     - mongodb
@@ -24,9 +25,9 @@
 
 
 
-  tasks:
+  tasks: # # ansible aws ec2 module --- https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ec2_instance_module.html
   - name: create ec2 instance 
-    amazon.aws.ec2_instance: # ansible aws ec2 module --- https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ec2_instance_module.html
+    amazon.aws.ec2_instance: 
       name: "{{ item }}" # this the key for reffer instance
       instance_type: t3.micro
       security_group: "{{ sg_id }}"
@@ -34,10 +35,10 @@
 
       tags: # this is used for visible name for our understanding purpose
         Name: "{{ item }}"  # ietm enduku ante instance aa name tho vudo aa name tho manaki visible authunhdi 
-    loop: "{{ instances }}" #  so here intially instance ani vudi -- error fatal: [localhost]: FAILED! => {"msg": "'instances' is undefined. 'instances' is undefined"}
-    register: ec2_output # manam istum name 
+    loop: "{{ instances }}" 
+    register: ec2_output # manam istum name this is used to take o/p 
   
-  # - name: print the ec2_output
+  # - name: print the ec2_output # manam istum name this is used to take o/p
   #   ansible.builtin.debug:
   #     msg: "{{ ec2_output }}"
 
@@ -63,12 +64,13 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
-      record: "{{ item.item }}.{{ domain_name }}" # mongodb.daws86s.fun
+      record: "{{ item.item }}.{{ domain_name }}" # mongodb.daws86s.fun # class 1:19:00 min in session24
       type: A
       ttl: 1
-      value: "{{ item.instances[0].private_ip_address }}"
+      value: "{{ item.instances[0].private_ip_address }}" # item loki loop o/p vastundhi 
+
       overwrite: true # so ikkada present ayyi vunte dhanni replace ayyi new ga update avuthundi 
-    loop: "{{ ec2_output.results }}"
+    loop: "{{ ec2_output.results }}" # see in notes
 
   # # we are creating one record with public only for frontend
   # - name: create route53 record for frontend
@@ -82,3 +84,12 @@
   #     overwrite: true
   #   when: item.item == "frontend"
   #   loop: "{{ ec2_output.results }}"
+
+
+
+#   https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ec2_instance_module.html
+# so here we can use this url for creating the instances
+# ===========================================================
+# https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/route53_module.html
+
+# so here we can  use this url for update route53 record
