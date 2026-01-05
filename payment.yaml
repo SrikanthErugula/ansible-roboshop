@@ -45,7 +45,7 @@
       dest: /app
       remote_src: yes
 
-  - name: install dependencies
+  - name: install dependencies # we need to check python pip modules exit or not if not u can run pip3.9
     ansible.builtin.pip: #ansible pip module ........https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/pip_module.html
       requirements: requirements.txt
       executable: pip3.9

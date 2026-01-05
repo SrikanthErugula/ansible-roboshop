@@ -32,7 +32,7 @@
       state: directory # present ani kuda ivvachu 
       path: /app
 
-  - name: Delete catalogue file
+  - name: Delete catalogue file # for second time ru cheste exist ayi vunte load or create cheyadhu for safe we can use this 
     ansible.builtin.file:
       path: /tmp/catalogue.zip
       state: absent

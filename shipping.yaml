@@ -58,15 +58,15 @@
       dest: /app
       remote_src: yes
 
-  - name: install dependencies
+  - name: install dependencies # session 26 25:00 min
     ansible.builtin.command: mvn clean package # so here target folder ani create ayyi andhulo .jar ani file create avuthundi
-    args:
-      chdir: /app
+    args: 
+      chdir: /app # it must be run inside app directory-- here specific directiry ki velli run avvalante ila
 
-  - name: move jar file
+  - name: move jar file # name for our understand
     ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
     args:
-      chdir: /app
+      chdir: /app # it must be run inside app directory-- here specific directiry ki velli run avvalante ila
 
   - name: copy shipping service
     ansible.builtin.copy:
