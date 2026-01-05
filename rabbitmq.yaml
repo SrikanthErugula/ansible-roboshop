@@ -19,7 +19,7 @@
       state: started
       enabled: yes
   
-  - name: create and provide permissions to user
+  - name: create and provide permissions to user # 
     community.rabbitmq.rabbitmq_user: #  type in google like ansible rabbitmq module --- https://docs.ansible.com/projects/ansible/latest/collections/community/rabbitmq/rabbitmq_user_module.html#ansible-collections-community-rabbitmq-rabbitmq-user-module
       user: roboshop
       password: roboshop123

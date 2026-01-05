@@ -25,8 +25,8 @@
   - name: allow remote connections
     ansible.builtin.replace: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/replace_module.html
       path: /etc/mongod.conf # so here vim cmd tho changes reflect or not kosme chustam, with sudo su - ichhi lekapothe radhu
-      regexp: '127.0.0.1'
-      replace: '0.0.0.0'
+      regexp: '127.0.0.1' # dheni replace cheyali anedhi
+      replace: '0.0.0.0'  # which value tho replace 
 
 
   - name: Start service and enabled mongod,if not started

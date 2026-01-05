@@ -42,13 +42,11 @@
       url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
       dest: /tmp/catalogue.zip
 
-  - name: extract catalogue application
+  - name: extract catalogue application # session 25 1:15:00
     ansible.builtin.unarchive: # ansible unzip module ---- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/unarchive_module.html
       src: /tmp/catalogue.zip
       dest: /app
-                  # so intha varaku runcheste manaki error avstundhi like --The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
-                  # so here remote server lo kadha task lu excute ayyedhi bcz we are configuring the remoteserver kabbati.. not in ansible server... 
-                  # by default ansible server li numchi file ni remote serevr loki move chayali feel avuthudni, bur actuall ga remote lone file vuntadi... we have a one option like as below remote_src
+      # see in notes
       remote_src: yes # 
 
                   # 98.81.251.192 | 172.31.85.14 | t3.micro | null
@@ -81,7 +79,7 @@
       name: mongodb-mongosh
       state: present
   
-  - name: connnect to mongodb catalogue
+  - name: connnect to mongodb catalogue # here data ni load cheyatum anedhi usual ga vundadhu so will go for commoad mode
     ansible.builtin.command: mongosh mongodb.dsoaws.fun --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output # sohere we are taking output by run this line... register lo store avuthundi vachhina o/p
 
@@ -91,7 +89,7 @@
   
   - name: load products into mongodb
     ansible.builtin.shell: mongosh --host mongodb.dsoaws.fun </app/db/master-data.js
-    when: catalogue_output.stdout | int < 0
+    when: catalogue_output.stdout | int < 0 # session 25 1:20 min........ see in notes
 
   - name: daemon reload enable and start
     ansible.builtin.systemd_service: # type in google ansible systemd daemon reload ----- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/systemd_service_module.html
