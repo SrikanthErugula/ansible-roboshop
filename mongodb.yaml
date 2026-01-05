@@ -12,7 +12,7 @@
   - name: install mongodb server
     ansible.builtin.package: # URL iS: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/package_module.html
       name: mongodb-org 
-      state: absent
+      state: present
 
   # - name: Start service mongod,if not started
   #   ansible.builtin.service: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html
