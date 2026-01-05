@@ -48,14 +48,7 @@
       dest: /app
       # see in notes
       remote_src: yes # 
-
-                  # 98.81.251.192 | 172.31.85.14 | t3.micro | null
-                  # [ ec2-user@ip-172-31-85-14 /app ]$ ls -l
-                  # total 12
-                  # drwxr-xr-x 2 root root   28 Jun 23  2024 db
-                  # -rw-r--r-- 1 root root  477 Jun 23  2024 package.json
-                  # -rw-r--r-- 1 root root 4877 Jun 23  2024 server.js
-                  # ippudu extract ayyindi...........
+      # see notes for deatails..
 
 #### so here archive ante zipping .......... unarchive ante unzipping 
   - name: install dependencies
