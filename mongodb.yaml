@@ -1,40 +1,65 @@
-- name: setup mongodb
+# - name: setup mongodb
+#   hosts: mongodb
+#   become: yes
+#   tasks: 
+#   - name: copy mongodb repo # our understand name
+#     ansible.builtin.copy:  # take from doc for excute the cmd URL IS ---https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/copy_module.html
+#     # we need to give one tab space
+#       src: mongo.repo # IKKADA NUMCHI 
+#       dest: /etc/yum.repos.d/mongo.repo
+#     # here we have one dig that is ansible-roboshop 15:00 min class 25 
+#     # gathering facts step success ite we can able to conect .........
+#   - name: install mongodb server
+#     ansible.builtin.package: # URL iS: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/package_module.html
+#       name: mongodb-org 
+#       state: present
+
+#   # - name: Start service mongod,if not started
+#   #   ansible.builtin.service: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html
+#   #     name: mongod
+#   #     state: started
+#   #     enabled: yes
+
+#   # so idhi lst lo rasam
+    
+#   - name: allow remote connections
+#     ansible.builtin.replace: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/replace_module.html
+#       path: /etc/mongod.conf # so here vim cmd tho changes reflect or not kosme chustam, with sudo su - ichhi lekapothe radhu
+#       regexp: '127.0.0.1' # dheni replace cheyali anedhi
+#       replace: '0.0.0.0'  # which value tho replace 
+
+
+#   - name: Start service and enabled mongod,if not started
+#     ansible.builtin.service: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html
+#       name: mongod
+#       state: started
+#       enabled: yes
+  
+# # so next mongodb pub ip tho vere tab lo login ayyyi ...$ netstat -lntp iste manaki results vasti....done mongodb
+# # tcp        0      0 0.0.0.0:27017           0.0.0.0:*               LISTEN      -  -- need to open this port for successful connect
+
+- name: setup mongodb server
   hosts: mongodb
   become: yes
-  tasks: 
-  - name: copy mongodb repo # our understand name
-    ansible.builtin.copy:  # take from doc for excute the cmd URL IS ---https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/copy_module.html
-    # we need to give one tab space
-      src: mongo.repo # IKKADA NUMCHI 
+  tasks:
+  - name: copy mongodb repo
+    ansible.builtin.copy:
+      src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
-    # here we have one dig that is ansible-roboshop 15:00 min class 25 
-    # gathering facts step success ite we can able to conect .........
+
   - name: install mongodb server
-    ansible.builtin.package: # URL iS: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/package_module.html
-      name: mongodb-org 
+    ansible.builtin.package:
+      name: mongodb-org
       state: present
-
-  # - name: Start service mongod,if not started
-  #   ansible.builtin.service: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html
-  #     name: mongod
-  #     state: started
-  #     enabled: yes
-
-  # so idhi lst lo rasam
-    
+      
   - name: allow remote connections
-    ansible.builtin.replace: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/replace_module.html
-      path: /etc/mongod.conf # so here vim cmd tho changes reflect or not kosme chustam, with sudo su - ichhi lekapothe radhu
-      regexp: '127.0.0.1' # dheni replace cheyali anedhi
-      replace: '0.0.0.0'  # which value tho replace 
-
-
-  - name: Start service and enabled mongod,if not started
-    ansible.builtin.service: # https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/service_module.html
+    ansible.builtin.replace:
+      path: /etc/mongod.conf
+      regexp: '127.0.0.1'
+      replace: '0.0.0.0'
+  
+  - name: start and enable service
+    ansible.builtin.service:
       name: mongod
       state: started
       enabled: yes
-  
-# so next mongodb pub ip tho vere tab lo login ayyyi ...$ netstat -lntp iste manaki results vasti....done mongodb
-# tcp        0      0 0.0.0.0:27017           0.0.0.0:*               LISTEN      -  -- need to open this port for successful connect
-
