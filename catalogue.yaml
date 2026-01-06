@@ -40,11 +40,11 @@
   - name: download catalogue application
     ansible.builtin.get_url: # ansible download file --- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/get_url_module.html
       url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
-      dest: /tmp/catalogue.zip
+      dest: /tmp/catalogue.zip # oka temp file loki code copied or moved 
 
   - name: extract catalogue application # session 25 1:15:00
     ansible.builtin.unarchive: # ansible unzip module ---- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/unarchive_module.html
-      src: /tmp/catalogue.zip
+      src: /tmp/catalogue.zip # oka temp filde loki code copied
       dest: /app
       # see in notes
       remote_src: yes # 
