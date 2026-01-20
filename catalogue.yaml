@@ -82,7 +82,7 @@
   
   - name: load products into mongodb
     ansible.builtin.shell: mongosh --host mongodb.dsoaws.fun </app/db/master-data.js
-    when: catalogue_output.stdout | int < 0 # session 25 1:20 min........ see in notes
+    when: catalogue_output.stdout | int < 0 # session 25 1hr:20 min........ see in notes
 
   - name: daemon reload enable and start
     ansible.builtin.systemd_service: # type in google ansible systemd daemon reload ----- https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/systemd_service_module.html
