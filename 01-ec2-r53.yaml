@@ -2,7 +2,7 @@
   hosts: local # hostes ani vunte error vastundi 
   connection: local
   vars:
-    ami_id: ami-09c813fb71547fc4f
+    ami_id: ami-0220d79f3f480ecf5 # ami-09c813fb71547fc4f
     sg_id: sg-05184d3f3e9b3610f # replace with your SG ID
     zone_id: "Z0508801ITHFU9ARNA74" # replace with your ID
     domain_name: "dsoaws.fun"
