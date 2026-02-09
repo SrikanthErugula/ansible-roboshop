@@ -2,8 +2,8 @@
   hosts: local # hostes ani vunte error vastundi 
   connection: local
   vars:
-    ami_id: ami-0220d79f3f480ecf5 # ami-09c813fb71547fc4f
-    sg_id: sg-05184d3f3e9b3610f # replace with your SG ID
+    ami_id: "ami-0220d79f3f480ecf5" # ami-09c813fb71547fc4f
+    sg_id: "sg-0f74162209ede7254" # replace with your SG ID
     zone_id: "Z08113913KWDT82RCNFTV" # replace with your ID
     domain_name: "devops.fun"
     # we can pass instances through command line using -e .. so everytime vachhi add chesukoni run cheyakunda intance ni 
