@@ -38,23 +38,23 @@
     loop: "{{ instances }}" 
     register: ec2_output # manam istum name this is used to take o/p 
   
-  # - name: print the ec2_output # manam istum name this is used to take o/p
-  #   ansible.builtin.debug:
-  #     msg: "{{ ec2_output }}"
+  - name: print the ec2_output # manam istum name this is used to take o/p
+    ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
 
 # #  [ ec2-user@ip-172-31-76-65 ~/ansible-roboshop ]$ pip3.9 install botocore boto3 -- so idi install cheste ansible can connect 
 
 # for testing purpose we use the below
 
-  # - name: print public_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].public_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
+  - name: print public_ip
+    ansible.builtin.debug: 
+      msg: "{{ item.instances[0].public_ip_address }}"
+    loop: "{{ ec2_output.results }}"
 
-  # - name: print private_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].private_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
+  - name: print private_ip
+    ansible.builtin.debug: 
+      msg: "{{ item.instances[0].private_ip_address }}"
+    loop: "{{ ec2_output.results }}"
 
 #   #SO HERE SEPARATE GA PUBLIC AND PRIVATE IP DISPLAY AVUTHAI
 
