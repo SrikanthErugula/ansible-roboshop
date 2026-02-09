@@ -67,8 +67,8 @@
       record: "{{ item.item }}.{{ domain_name }}" # mongodb.daws86s.fun # class 1:19:00 min in session24
       type: A
       ttl: 1
-      value: "{{ item.instances[0].private_ip_address }}" # item loki loop o/p vastundhi 
-      value: "{{ item.instances[0].private_dns_name }}" # item loki loop o/p vastundhi 
+      value: "{{ item.instances[0].private_ip_address }}" # item loki loop o/p vastundhi
+      # value: "{{ item.instances[0].private_dns_name }}" # item loki loop o/p vastundhi 
 
       overwrite: true # so ikkada present ayyi vunte dhanni replace ayyi new ga update avuthundi 
     loop: "{{ ec2_output.results }}" # see in notes
