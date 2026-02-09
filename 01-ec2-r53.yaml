@@ -12,9 +12,9 @@
     instances:
     - mongodb
     - redis 
-    - mysql 
-    - rabbitmq
-    # - user
+    # - mysql 
+    # - rabbitmq
+    # # - user
     # - cart
     # - catalogue
     # - shipping
