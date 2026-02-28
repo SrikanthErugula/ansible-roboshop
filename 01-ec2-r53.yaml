@@ -17,9 +17,9 @@
     - user
     - cart
     - catalogue
-    # - shipping
-    # - payment
-    # - frontend
+    - shipping
+    - payment
+    - frontend
 
    #  ansible-playbook -i inventory.ini 01-ec2-r53.yaml -e "instances=['catalogue','user','cart']" ... like this 
 
