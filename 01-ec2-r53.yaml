@@ -11,8 +11,8 @@
 
     instances:
     - mongodb
-    # - redis 
-    # - mysql 
+    - redis 
+    - mysql 
     # - rabbitmq
     # # - user
     # - cart
