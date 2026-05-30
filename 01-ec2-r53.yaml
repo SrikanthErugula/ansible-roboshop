@@ -7,8 +7,8 @@
     zone_id: "Z04684822ZHOD2IE49OQC" # replace with your ID
     domain_name: "dsoaws.fun"
     # we can pass instances through command line using -e .. so everytime vachhi add chesukoni run cheyakunda intance ni 
-    #by cmd tho run cretae cheyabchu 
-
+    #by cmd tho run cretae cheyabchu #  ansible-playbook -i inventory.ini 01-ec2-r53.yaml -e "instances=['catalogue','user','cart']" ... like this 
+    
     instances:
     - mongodb
     - redis 
@@ -20,11 +20,6 @@
     - shipping
     - payment
     - frontend
-
-   #  ansible-playbook -i inventory.ini 01-ec2-r53.yaml -e "instances=['catalogue','user','cart']" ... like this 
-
-
-
   tasks: # # ansible aws ec2 module --- https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ec2_instance_module.html
   - name: create ec2 instance 
     amazon.aws.ec2_instance: 
