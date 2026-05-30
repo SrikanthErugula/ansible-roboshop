@@ -1,0 +1,19 @@
+- name: Set up Daatabse for Expensive
+  hosts: exmysql
+  become: yes
+  tasks:
+  - name: Installing exmysql server
+    ansible.builtin.package:
+      name: mysql-server
+      state: present
+
+  - name: System Service 
+    ansible.builtin.service:
+      name: mysqld
+      state: started
+      enabled: yes
+
+  - name: Set up ROOT PWD
+    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+
+
