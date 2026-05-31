@@ -34,10 +34,10 @@
       path: /tmp/backend.zip
       state: absent
   
-  - name: create backend.zip file directory
-    ansible.builtin.file:
-      state: directory
-      path: /tmp/backend.zip
+  # - name: create backend.zip file directory
+  #   ansible.builtin.file:
+  #     state: directory
+  #     path: /tmp/backend.zip
 
   - name: Download Expense Backend
     ansible.builtin.get_url:
