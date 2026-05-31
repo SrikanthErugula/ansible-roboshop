@@ -11,7 +11,7 @@
     
     instances:
     # - exdb
-    - exfrnt
+    # - exfrnt
     # - mongodb
     # - redis 
     # - mysql 
@@ -21,7 +21,7 @@
     # - catalogue
     # - shipping
     # - payment
-    # - frontend
+    - frontend
   tasks: # # ansible aws ec2 module --- https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ec2_instance_module.html
   - name: create ec2 instance 
     amazon.aws.ec2_instance: 
