@@ -20,7 +20,7 @@
       enabled: yes
   
   - name: create and provide permissions to user # 
-    community.rabbitmq.rabbitmq_user: #  type in google like ansible rabbitmq module --- https://docs.ansible.com/projects/ansible/latest/collections/community/rabbitmq/rabbitmq_user_module.html#ansible-collections-community-rabbitmq-rabbitmq-user-module
+    community.rabbitmq.rabbitmq_user: #  type in google like ansible rabbitmq module -
       user: roboshop
       password: roboshop123
       permissions:
@@ -30,5 +30,26 @@
           write_priv: .*
       state: present
 
+# rabbitmq module --- https://docs.ansible.com/projects/ansible/latest/collections/community/rabbitmq/rabbitmq_user_module.html#ansible-collections-community-rabbitmq-rabbitmq-user-module
+
 
 # tcp6       0      0 :::4369                 :::*                    LISTEN      - need to open this port
+
+
+
+
+# this is code comes from CHATGPT
+
+
+  # - name: Check if RabbitMQ user exists
+  #   ansible.builtin.shell: rabbitmqctl list_users | grep -w roboshop
+  #   register: rabbitmq_user
+  #   ignore_errors: true
+  #   changed_when: false
+
+  # - name: Create RabbitMQ user
+  #   ansible.builtin.command: rabbitmqctl add_user roboshop roboshop123
+  #   when: rabbitmq_user.rc != 0
+
+  # - name: Set permissions for RabbitMQ user
+  #   ansible.builtin.command: rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
