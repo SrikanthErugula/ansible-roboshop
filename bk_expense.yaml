@@ -55,7 +55,7 @@
       path: /app
 
   - name: Copying backend service file
-    anisble.builtin.copy:
+    ansible.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system
 
