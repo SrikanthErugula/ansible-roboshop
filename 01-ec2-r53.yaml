@@ -10,17 +10,15 @@
     #by cmd tho run cretae cheyabchu #  ansible-playbook -i inventory.ini 01-ec2-r53.yaml -e "instances=['catalogue','user','cart']" ... like this 
     
     instances:
-    # - exdb
-    # - exfrnt
-    # - mongodb
-    # - redis 
-    # - mysql 
-    # - rabbitmq
-    # - user
-    # - cart
-    # - catalogue
-    # - shipping
-    # - payment
+    - mongodb
+    - redis 
+    - mysql 
+    - rabbitmq
+    - user
+    - cart
+    - catalogue
+    - shipping
+    - payment
     - frontend
   tasks: # # ansible aws ec2 module --- https://docs.ansible.com/projects/ansible/latest/collections/amazon/aws/ec2_instance_module.html
   - name: create ec2 instance 
