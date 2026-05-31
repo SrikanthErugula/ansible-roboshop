@@ -53,3 +53,46 @@
     anisble.builtin.copy:
       src: backend.service
       dest: /etc/systemd/system
+
+  # - name: daemon reload enable and start
+  #   ansible.builtin.systemd_service:
+  #     name: backend
+  #     enabled: true
+  #     state: started
+  #     daemon_reload: true
+
+  # - name: Set up service files
+  #   ansible.builtin.service:
+  #     name: backend
+  #     state: started
+  #     enabled: yes
+
+  - name: Installing myswl clinet server
+    ansible.builtin.package:
+      name: mysql
+      state: present
+  
+  - name: Install PyMySQL
+    ansible.builtin.pip:
+      name: PyMySQL
+      state: present
+
+  - name: Load MySQL schema
+    ansible.builtin.shell: mysql -h exdb.dsoaws.fun -uroot -pExpenseApp@1 < /app/schema/backend.sql
+
+  
+  - name: daemon reload enable and start
+    ansible.builtin.systemd_service:
+      name: backend
+      enabled: true
+      state: started
+      daemon_reload: true
+
+  - name: Set up service files
+    ansible.builtin.service:
+      name: backend
+      state: started
+      enabled: yes
+  
+
+  
