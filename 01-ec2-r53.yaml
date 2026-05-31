@@ -10,7 +10,8 @@
     #by cmd tho run cretae cheyabchu #  ansible-playbook -i inventory.ini 01-ec2-r53.yaml -e "instances=['catalogue','user','cart']" ... like this 
     
     instances:
-    - exdb
+    # - exdb
+    - exbk
     # - mongodb
     # - redis 
     # - mysql 
