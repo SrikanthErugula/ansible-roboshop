@@ -11,7 +11,7 @@
     
     instances:
     # - exdb
-    - exbk
+    - exfrnt
     # - mongodb
     # - redis 
     # - mysql 
